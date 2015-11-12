@@ -126,7 +126,7 @@ function listenForCOAlarms(alarm) {
 
 */
 function listenForBatteryAlarms(alarm) {
-  alarm.child('battry_health').ref().on('value', function (state) {
+  alarm.child('battery_health').ref().on('value', function (state) {
 
     // Don't show battery alerts if a more
     // important alert is already showing
@@ -134,7 +134,7 @@ function listenForBatteryAlarms(alarm) {
          alarm.smoke_alarm_state === 'ok' &&
          alarm.co_alarm_state === 'ok') {
       notify('Replace battery', {
-        tag: alarm.child('device_id').val() + '-battry_health',
+        tag: alarm.child('device_id').val() + '-battery_health',
         body: 'The battery is low on ' + alarm.child('name_long').val(),
         color: alarm.child('ui_color_state').val()
       });
